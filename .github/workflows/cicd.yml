@@ -11,8 +11,8 @@ jobs:
   docker:
     uses: "mentoriaiac/cicd_centralizado/.github/workflows/docker_build.yaml@v1"
     with:
-      image: leofl94/mariaquiteria:latest
-      push_image: ${{github.event_name == 'push'}}
+      image: leofl94/mariaquiteria
+      push_image: ${{github.event_name == 'release'}}
     secrets:
       docker_user: ${{secrets.DOCKER_LOGIN}}
       docker_password: ${{secrets.TOKEN_DOCKERHUB}}
