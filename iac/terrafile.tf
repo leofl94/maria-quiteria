@@ -15,8 +15,8 @@ module "ecs_mentoria" {
   app_count        = 1
   fargate_cpu      = 256
   fargate_memory   = 512
-  subnet_ids       = ["subnet-0822eb8e18f36434c", "subnet-0eec47c777d3353af"]
-  vpc_id           = "vpc-04ea2b12fa2faf81e"
+  subnet_ids       = ["subnet-0bb587679c700032b", "subnet-09382bf1d068bad2d"]
+  vpc_id           = "vpc-01a92cabd8e836884"
   protocol         = "HTTP"
   family_name      = "mentoria"
   service_name     = "mentoria"
