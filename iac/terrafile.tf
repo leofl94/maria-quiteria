@@ -10,19 +10,19 @@ data "template_file" "container_definitions" {
 }
 
 module "ecs_mentoria" {
-  source           = "git::https://github.com/mentoriaiac/iac-modulo-aws-ecs.git"
-  create_cluster   = true
-  app_count        = 1
-  fargate_cpu      = 256
-  fargate_memory   = 512
-  subnet_ids       = ["subnet-0bb587679c700032b", "subnet-09382bf1d068bad2d"]
-  vpc_id           = "vpc-01a92cabd8e836884"
-  protocol         = "HTTP"
-  family_name      = "mentoria"
-  service_name     = "mentoria"
-  cluster_name     = "mentoria"
-  container1_name  = "api"
-  container1_port  = 8000
+  source                = "git::https://github.com/mentoriaiac/iac-modulo-aws-ecs.git"
+  create_cluster        = true
+  app_count             = 1
+  fargate_cpu           = 256
+  fargate_memory        = 512
+  subnet_ids            = ["subnet-0bb587679c700032b", "subnet-09382bf1d068bad2d"]
+  vpc_id                = "vpc-01a92cabd8e836884"
+  protocol              = "HTTP"
+  family_name           = "mentoria"
+  service_name          = "mentoria"
+  cluster_name          = "mentoria"
+  container1_name       = "api"
+  container1_port       = 8000
   container_definitions = data.template_file.container_definitions.rendered
 
   tags = {
@@ -42,7 +42,7 @@ output "security_group_id" {
   value = module.ecs_mentoria.security_group_id
 }
 
-variable image {
+variable "image" {
   type        = string
   description = "Nome da Imagem"
 }
