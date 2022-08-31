@@ -5,14 +5,14 @@ on:
     types: [created]
 
 env:
-  TF_VAR_image: chnacib/mariaquiteria:latest
+  TF_VAR_image: leofl94/mariaquiteria:latest
 
 jobs:
   docker:
     uses: "mentoriaiac/cicd_centralizado/.github/workflows/docker_build.yaml@v1"
     with:
       
-      image: chnacib/mariaquiteria
+      image: leofl94/mariaquiteria
 
       push_image: ${{github.event_name == 'push'}}
     secrets:
