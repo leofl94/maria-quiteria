@@ -11,20 +11,18 @@ jobs:
   docker:
     uses: "mentoriaiac/cicd_centralizado/.github/workflows/docker_build.yaml@v1"
     with:
-      
       image: leofl94/mariaquiteria
-
       push_image: ${{github.event_name == 'push'}}
     secrets:
       docker_user: ${{secrets.DOCKER_LOGIN}}
       docker_password: ${{secrets.TOKEN_DOCKERHUB}}
-  
-  # terraform:
-  #   needs: docker
-  #   uses: "mentoriaiac/cicd_centralizado/.github/workflows/terraform_executa_modulo_aws.yaml@v1"
-  #   with:
-  #     aws_region: "us-east-1"
-  #     tf_workspace: "default"
-  #   secrets:
-  #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+  terraform:
+    needs: docker
+    uses: "mentoriaiac/cicd_centralizado/.github/workflows/terraform.yaml@v1"
+    with:
+      plan: true
+      apply: true
+      working_directory: ./iac
+      workspace: "prod"
+    secrets: inherit
