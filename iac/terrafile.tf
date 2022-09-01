@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 data "template_file" "container_definitions" {
-  template = file("./container_definitions.json")
+  template = file("./iac/container_definitions.json")
   vars = {
     IMAGE = var.image
   }
