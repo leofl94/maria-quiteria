@@ -18,7 +18,7 @@ jobs:
       docker_password: ${{secrets.TOKEN_DOCKERHUB}}
 
   terraform:
-    needs: docker
+    #needs: docker
     uses: "mentoriaiac/cicd_centralizado/.github/workflows/terraform.yaml@v1"
     with:
       plan: true
