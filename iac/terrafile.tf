@@ -8,7 +8,7 @@ data "template_file" "container_definitions" {
     IMAGE = var.image
   }
 }
-
+#tfsec:ignore:module.ecs_mentoria:aws_iam_policy.ecs_task_ssm_policy
 module "ecs_mentoria" {
   source                = "git::https://github.com/mentoriaiac/iac-modulo-aws-ecs.git"
   create_cluster        = true
